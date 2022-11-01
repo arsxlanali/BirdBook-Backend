@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const QuestionSchema = new Schema({
   text: { type: String },
   type: { type: String },
+  media: { type: String },
   answers: [
     {
       text: {
