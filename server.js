@@ -13,7 +13,7 @@ const credentials = require("./middleware/credentials");
 const mongoose = require("mongoose");
 const connectDB = require("./config/dbConn");
 const os = require("os");
-const PORT = process.env.PORT || 3500;
+const PORT = process.env.PORT;
 
 const cloudinaryConfig = cloudinary.config({
   cloud_name: process.env.CLOUDNAME,
