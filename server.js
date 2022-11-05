@@ -13,14 +13,7 @@ const credentials = require("./middleware/credentials");
 const mongoose = require("mongoose");
 const connectDB = require("./config/dbConn");
 const os = require("os");
-const PORT = process.env.PORT;
-
-const cloudinaryConfig = cloudinary.config({
-  cloud_name: process.env.CLOUDNAME,
-  api_key: process.env.CLOUDAPIKEY,
-  api_secret: process.env.CLOUDINARYSECRET,
-  secure: true,
-});
+const PORT = process.env.PORT || 3500;
 
 // Connect to MongoDB
 connectDB();
@@ -60,7 +53,7 @@ app.use("/users", require("./routes/api/users"));
 
 app.use("/questions", require("./routes/api/quizzes"));
 
-// app.use("/img");
+app.use("/img", require("./routes/api/cloudinary"));
 
 app.all("*", (req, res) => {
   res.status(404);

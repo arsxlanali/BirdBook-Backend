@@ -1,3 +1,12 @@
+require("dotenv").config();
+const cloudinary = require("cloudinary").v2;
+const cloudinaryConfig = cloudinary.config({
+  cloud_name: process.env.CLOUDNAME,
+  api_key: process.env.CLOUDAPIKEY,
+  api_secret: process.env.CLOUDINARYSECRET,
+  secure: true,
+});
+
 const getSignature = async (req, res) => {
   const timestamp = Math.round(new Date().getTime() / 1000);
   const signature = cloudinary.utils.api_sign_request(
@@ -29,4 +38,8 @@ const uploadImg = async (req, res) => {
       existingData + req.body.public_id + "\n"
     );
   }
+};
+
+module.exports = {
+  getSignature,
 };

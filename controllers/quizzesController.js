@@ -23,6 +23,7 @@ const createNewQuestion = async (req, res) => {
     const result = await Question.create({
       text: req.body.text,
       type: req.body.type,
+      media: req.body.media,
       answers: req.body.answers,
     });
 
@@ -45,6 +46,7 @@ const updateQuestion = async (req, res) => {
   }
   if (req.body?.text) question.text = req.body.text;
   if (req.body?.type) question.type = req.body.type;
+  if (req.body?.media) question.media = req.body.media;
   if (req.body?.answers) question.answers = req.body.answers;
   const result = await question.save();
   res.json(result);
