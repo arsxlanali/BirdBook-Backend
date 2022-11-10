@@ -1,9 +1,9 @@
-require("dotenv").config();
 const express = require("express");
-const cloudinary = require("cloudinary").v2;
+
 const app = express();
 const path = require("path");
 const cors = require("cors");
+require("dotenv").config();
 const corsOptions = require("./config/corsOptions");
 const { logger } = require("./middleware/logEvents");
 const errorHandler = require("./middleware/errorHandler");
