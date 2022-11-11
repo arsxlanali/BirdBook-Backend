@@ -7,9 +7,9 @@ const verifyRoles = require("../../middleware/verifyRoles");
 router
   .route("/")
   .get(quizzesController.getAllQuestions)
-  .post(quizzesController.createNewQuestion)
-  .put(quizzesController.updateQuestion)
-  .delete(quizzesController.deleteQuestion);
+  .post(verifyRoles(ROLES_LIST.Admin), quizzesController.createNewQuestion)
+  .put(verifyRoles(ROLES_LIST.Admin), quizzesController.updateQuestion)
+  .delete(verifyRoles(ROLES_LIST.Admin), quizzesController.deleteQuestion);
 
 router.route("/result").get(quizzesController.getResult);
 router.route("/:id").get(quizzesController.getQuestion);
