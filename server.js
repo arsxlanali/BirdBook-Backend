@@ -52,6 +52,7 @@ app.use("/employees", require("./routes/api/employees"));
 app.use("/users", require("./routes/api/users"));
 
 app.use("/questions", require("./routes/api/quizzes"));
+app.use("/articles", require("./routes/api/articles"));
 
 app.use("/img", require("./routes/api/cloudinary"));
 

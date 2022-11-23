@@ -19,7 +19,7 @@ const createNewArticle = async (req, res) => {
   ) {
     return res
       .status(400)
-      .json({ message: "title , published and answers fileds are required!" });
+      .json({ message: "You need to fill all the fileds" });
   }
 
   try {
@@ -37,7 +37,7 @@ const createNewArticle = async (req, res) => {
   }
 };
 
-const deleteQuestion = async (req, res) => {
+const deleteArticle = async (req, res) => {
   if (!req?.body?.id)
     return res.status(400).json({ message: "Article ID required." });
 
@@ -51,7 +51,7 @@ const deleteQuestion = async (req, res) => {
   res.json(result);
 };
 
-const getQuestion = async (req, res) => {
+const getArticle = async (req, res) => {
   if (!req?.params?.id)
     return res.status(400).json({ message: "Article ID required." });
 
@@ -67,6 +67,6 @@ const getQuestion = async (req, res) => {
 module.exports = {
   getAllArticles,
   createNewArticle,
-  deleteQuestion,
-  getQuestion,
+  deleteArticle,
+  getArticle,
 };
