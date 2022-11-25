@@ -1,10 +1,10 @@
 const Article = require("../model/Article");
 
 const getAllArticles = async (req, res) => {
-  if (!req?.body?.title) {
-    return res.status(400).json({ message: "title is required in the body!." });
-  }
-  const articles = await Article.find({ title: req.body.title }, { __v: 0 });
+  // if (!req?.body?.title) {
+  //   return res.status(400).json({ message: "title is required in the body!." });
+  // }
+  const articles = await Article.findAll({ __v: 0 });
   if (!Article) return res.status(204).json({ message: "No article found!" });
   res.json(articles);
 };
@@ -17,9 +17,7 @@ const createNewArticle = async (req, res) => {
     !req?.body?.text ||
     !req?.body?.image
   ) {
-    return res
-      .status(400)
-      .json({ message: "You need to fill all the fileds" });
+    return res.status(400).json({ message: "You need to fill all the fileds" });
   }
 
   try {
