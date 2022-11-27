@@ -8,6 +8,7 @@ const cloudinaryConfig = cloudinary.config({
 });
 
 const getSignature = async (req, res) => {
+  console.log("log", req);
   const timestamp = Math.round(new Date().getTime() / 1000);
   const signature = cloudinary.utils.api_sign_request(
     {

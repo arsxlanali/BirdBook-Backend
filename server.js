@@ -53,6 +53,9 @@ app.use("/users", require("./routes/api/users"));
 
 app.use("/questions", require("./routes/api/quizzes"));
 app.use("/articles", require("./routes/api/articles"));
+app.use("/videos", require("./routes/api/videos"));
+app.use("/podcasts", require("./routes/api/podcasts"));
+app.use("/advertisement", require("./routes/api/advertisement"));
 
 app.use("/img", require("./routes/api/cloudinary"));
 

@@ -35,8 +35,8 @@ const handleLogin = async (req, res) => {
     // Saving refreshToken with current user
     foundUser.refreshToken = refreshToken;
     const result = await foundUser.save();
-    console.log(result);
-    console.log(roles);
+    // console.log(result);
+    // console.log(roles);
 
     // Creates Secure Cookie with refresh token
     res.cookie("jwt", refreshToken, {
@@ -45,10 +45,11 @@ const handleLogin = async (req, res) => {
       sameSite: "None",
       maxAge: 24 * 60 * 60 * 1000,
     });
-    console.log("this is ", foundUser);
+    // console.log("this is ", foundUser);
     const { _id, email, name } = foundUser;
+    const { User } = foundUser.roles;
     // Send authorization roles and access token to user
-    res.json({ _id, email, name, accessToken });
+    res.status(200).json({ _id, email, name, accessToken, User });
   } else {
     res.sendStatus(401);
   }

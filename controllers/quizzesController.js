@@ -1,9 +1,11 @@
 const Question = require("../model/Question");
 
 const getAllQuestions = async (req, res) => {
+  console.log("this is prams", req.params, req.body);
   if (!req?.body?.type) {
     return res.status(400).json({ message: "Type is required in the body!." });
   }
+  console.log("helo", req?.body?.type);
   const questions = await Question.find(
     { type: req.body.type },
     { type: 0, __v: 0 }

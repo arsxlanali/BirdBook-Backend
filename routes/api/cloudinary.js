@@ -6,7 +6,10 @@ const verifyRoles = require("../../middleware/verifyRoles");
 
 router
   .route("/getSignature")
-  .get(verifyRoles(ROLES_LIST.Admin), cloudinaryController.getSignature);
+  .get(
+    verifyRoles(ROLES_LIST.Admin, ROLES_LIST.User),
+    cloudinaryController.getSignature
+  );
 
 // router
 //   .route("/uploadImg")

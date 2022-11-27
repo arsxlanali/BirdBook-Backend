@@ -1,10 +1,8 @@
 const Article = require("../model/Article");
 
 const getAllArticles = async (req, res) => {
-  // if (!req?.body?.title) {
-  //   return res.status(400).json({ message: "title is required in the body!." });
-  // }
-  const articles = await Article.findAll({ __v: 0 });
+
+  const articles = await Article.find({ __v: 0 });
   if (!Article) return res.status(204).json({ message: "No article found!" });
   res.json(articles);
 };
