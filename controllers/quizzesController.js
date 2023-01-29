@@ -5,7 +5,7 @@ const getAllQuestions = async (req, res) => {
   if (!req?.body?.type) {
     return res.status(400).json({ message: "Type is required in the body!." });
   }
-  console.log("helo", req?.body?.type);
+  // console.log("helo", req?.body?.type);
   const questions = await Question.find(
     { type: req.body.type },
     { type: 0, __v: 0 }
@@ -55,14 +55,15 @@ const updateQuestion = async (req, res) => {
 };
 
 const deleteQuestion = async (req, res) => {
-  if (!req?.body?.id)
+  // console.log("ddjd", req?.params?.id)
+  if (!req?.params?.id)
     return res.status(400).json({ message: "Question ID required." });
 
-  const question = await Question.findOne({ _id: req.body.id }).exec();
+  const question = await Question.findOne({ _id: req?.params?.id }).exec();
   if (!question) {
     return res
       .status(204)
-      .json({ message: `No question matches ID ${req.body.id}.` });
+      .json({ message: `No question matches ID ${req?.params?.id}.` });
   }
   const result = await question.deleteOne(); //{ _id: req.body.id }
   res.json(result);
